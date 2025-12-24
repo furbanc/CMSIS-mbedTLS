@@ -167,11 +167,12 @@
     <component Cclass="PSA" Cgroup="Crypto" Csub="mbed TLS" Cversion="4.0.0" condition="mbed TLS">
       <description>mbed TLS PSA Crypto</description>
       <RTE_Components_h>
-        #define RTE_PSA_CRYPTO
+        #define RTE_PSA_CRYPTO_API
       </RTE_Components_h>
       <files>
         <file category="doc"     name="tf-psa-crypto/apidoc/index.html"/>
         <file category="include" name="tf-psa-crypto/include/"/>
+        <file category="include" name="tf-psa-crypto/core/"/>
         <file category="header"  name="RTE/configs/mbedTLS_crypto_config.h" attr="config" version="4.0.0"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto.c"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto_client.c"/>
@@ -190,6 +191,7 @@
       </RTE_Components_h>
       <files>
         <file category="include" name="tf-psa-crypto/drivers/builtin/include/"/>
+        <file category="include" name="tf-psa-crypto/drivers/builtin/src/"/>
         <file category="source"  name="tf-psa-crypto/drivers/builtin/src/aes.c"/>
    <!-- <file category="source"  name="tf-psa-crypto/drivers/builtin/src/aesce.c"/> -->
    <!-- <file category="source"  name="tf-psa-crypto/drivers/builtin/src/aesni.c"/> -->

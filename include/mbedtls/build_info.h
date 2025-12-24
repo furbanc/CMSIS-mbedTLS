@@ -48,7 +48,11 @@
 
 /* X.509 and TLS configuration */
 #if !defined(MBEDTLS_CONFIG_FILE)
+#ifdef _RTE_
+#include "mbedTLS_config_wrapper.h"
+#else
 #include "mbedtls/mbedtls_config.h"
+#endif
 #else
 #include MBEDTLS_CONFIG_FILE
 #endif
