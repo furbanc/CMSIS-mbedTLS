@@ -19,7 +19,9 @@
 
 #include "mbedtls/build_info.h"
 
-#if defined(MBEDTLS_ENTROPY_HARDWARE_ALT)
+#if defined(MBEDTLS_PSA_DRIVER_GET_ENTROPY)
+
+#include "mbedtls/platform.h"
 
 #include <string.h>
 #include "cmsis_compiler.h"
@@ -30,26 +32,35 @@
  #error "::CMSIS:RTOS selection invalid"
 #endif
 
-int mbedtls_hardware_poll(void *data,
-                          unsigned char *output, size_t len, size_t *olen);
+#define LCG_RAND(val)   ((val) * 1103515245 + 12345) 
 
 /**
- * Entropy poll callback for a hardware source
+ * Get entropy callback for a hardware source
  */
-__WEAK int mbedtls_hardware_poll (void *data, unsigned char *output,
-                                  size_t len, size_t *olen) {
-  (void)data;
-  uint32_t timer;
-
-  if (len < sizeof(uint32_t)) {
-    *olen = 0;
-    return (0);
+__WEAK int mbedtls_platform_get_entropy(psa_driver_get_entropy_flags_t flags,
+                                 size_t *estimate_bits,
+                                 unsigned char *output, size_t output_size) {
+  uint32_t rand,len = (uint32_t)output_size;
+ 
+  if (flags != 0) {
+    return PSA_ERROR_NOT_SUPPORTED;
   }
-  /* Note: This is weak entropy source */
-  timer = osKernelGetTickCount ();
-  memcpy (output, &timer, sizeof(timer));
-  *olen = sizeof (timer);
+
+  /** Note: This is a weak entropy source.
+   *  It implements a LCG pseudo-random number generator
+   *  seeded with the kernel tick count.
+   */
+  rand = LCG_RAND(osKernelGetTickCount ());
+
+  for ( ; len > 3; len -= 4) {
+    memcpy (output, &rand, 4);
+    rand = LCG_RAND(rand);
+  }
+  memcpy (output, &rand, len);
+
+  *estimate_bits = 8 * output_size;
+
   return (0);
 }
 
-#endif /* MBEDTLS_ENTROPY_HARDWARE_ALT */
+#endif /* MBEDTLS_PSA_DRIVER_GET_ENTROPY */
