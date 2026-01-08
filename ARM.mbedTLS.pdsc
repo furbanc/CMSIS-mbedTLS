@@ -124,10 +124,11 @@
       <files>
         <file category="doc"     name="apidoc/index.html"/>
         <file category="include" name="include/"/>
+        <file category="include" name="library/"/>
         <file category="include" name="RTE/include/"/>
         <file category="header"  name="RTE/configs/mbedTLS_config.h"        attr="config" version="4.0.0"/>
         <file category="source"  name="library/debug.c"/>
-   <!-- <file category="source"  name="library/error.c"/>                   - auto-generated -->
+        <file category="source"  name="library/error.c"/>
         <file category="source"  name="library/mbedtls_config.c"/>
         <file category="source"  name="library/mps_reader.c"/>
         <file category="source"  name="library/mps_trace.c"/>
@@ -139,7 +140,7 @@
         <file category="source"  name="library/ssl_ciphersuites.c"/>
         <file category="source"  name="library/ssl_client.c"/>
         <file category="source"  name="library/ssl_cookie.c"/>
-   <!-- <file category="source"  name="library/ssl_debug_helpers_generated.c"/> - auto-generated -->
+        <file category="source"  name="library/ssl_debug_helpers_generated.c"/>
         <file category="source"  name="library/ssl_msg.c"/>
         <file category="source"  name="library/ssl_ticket.c"/>
         <file category="source"  name="library/ssl_tls.c"/>
@@ -151,7 +152,7 @@
         <file category="source"  name="library/ssl_tls13_server.c"/>
         <file category="source"  name="library/timing.c"/>
         <file category="source"  name="library/version.c"/>
-   <!-- <file category="source"  name="library/version_features.c"/>        - auto-generated -->
+        <file category="source"  name="library/version_features.c"/>
         <file category="source"  name="library/x509.c"/>
         <file category="source"  name="library/x509_create.c"/>
         <file category="source"  name="library/x509_crl.c"/>
@@ -176,7 +177,7 @@
         <file category="header"  name="RTE/configs/mbedTLS_crypto_config.h" attr="config" version="4.0.0"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto.c"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto_client.c"/>
-   <!-- <file category="source"  name="tf-psa-crypto/core/psa_crypto_driver_wrappers_no_static.c"/> - auto-generated -->
+        <file category="source"  name="tf-psa-crypto/core/psa_crypto_driver_wrappers_no_static.c"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto_slot_management.c"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto_storage.c"/>
         <file category="source"  name="tf-psa-crypto/core/psa_its_file.c"/>
