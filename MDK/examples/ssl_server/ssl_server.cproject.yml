@@ -26,6 +26,8 @@ project:
     - component: Network&MDK:Socket:TCP
     - component: Network&MDK:Socket:UDP
     - component: Security:mbed TLS
+    - component: PSA:Crypto:mbed TLS
+    - component: PSA:Driver:Built in
 
   layers:
     - layer: $Board-Layer$

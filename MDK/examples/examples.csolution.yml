@@ -1,6 +1,6 @@
 # A solution is a collection of related projects that share same base configuration.
 solution:
-  created-for: CMSIS-Toolbox@2.10.0
+  created-for: CMSIS-Toolbox@2.12.0
   cdefault:
 
   # List of tested compilers that can be selected
@@ -10,7 +10,7 @@ solution:
 
   # List of miscellaneous tool-specific controls
   misc:
-    - for-compiler: AC6      # GDB requires DWARF 5, remove when using uVision Debugger
+    - for-compiler: AC6 # GDB requires DWARF 5, remove when using uVision Debugger
       C-CPP:
         - -gdwarf-5
       ASM:
@@ -19,7 +19,7 @@ solution:
   # List the packs that define the device and/or board.
   packs:
     - pack: ARM::CMSIS-RTX@^5.9.0
-    - pack: ARM::mbedTLS@^3.6.0
+    - pack: ARM::mbedTLS@^4.0.0
     - pack: Keil::MDK-Middleware@^8.0.0
 
   # List different hardware targets that are used to deploy the solution.
@@ -28,7 +28,10 @@ solution:
       board: NXP::EVKB-IMXRT1050_MDK
       variables:
         - Board-Layer: $SolutionDir()$/target/IMXRT1050-EVKB/Board.clayer.yml
-
+      target-set:
+        - set:
+          images:
+            - project-context: ssl_client1.Debug
     # - type: STM32H735G-DK
     #   board: STMicroelectronics::STM32H735G-DK
     #   variables:
