@@ -13,7 +13,9 @@
   <url>https://www.keil.com/pack/</url>
   <releases>
     <release version="4.0.0-dev">
+      Active development ...
       Updated to mbedTLS V4.0.0
+      Added PSA Driver Built in component
     </release>
     <release version="3.6.5" date="2025-11-28">
       Updated to mbedTLS V3.6.5
