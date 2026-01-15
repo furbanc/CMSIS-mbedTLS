@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Version: 3.0
-# Date: 2023-11-06
+# Version: 3.1
+# Date: 2024-04-17
 # This bash script generates a CMSIS Software Pack:
 #
 
@@ -9,7 +9,7 @@ set -o pipefail
 # Set version of gen pack library
 # For available versions see https://github.com/Open-CMSIS-Pack/gen-pack/tags.
 # Use the tag name without the prefix "v", e.g., 0.7.0
-REQUIRED_GEN_PACK_LIB="0.11.3"
+REQUIRED_GEN_PACK_LIB="0.13.0"
 
 # Set default command line arguments
 DEFAULT_ARGS=(-c "cmsis_mbedtls_")
@@ -62,20 +62,21 @@ PACK_BASE_FILES="
 # Default: empty
 #
 PACK_DELETE_FILES="
-  *.gitignore
-  Makefile
-  CMakeLists.txt
+  **/Makefile
+  **/CMakeLists.txt
 "
 
 # Specify patches to be applied
 # Default: empty
 #
-# PACK_PATCH_FILES=""
+# PACK_PATCH_FILES="
+#     <list patches here>
+# "
 
 # Specify addition argument to packchk
 # Default: empty
 #
-#PACKCHK_ARGS=()
+PACKCHK_ARGS=(-x M317,M378)
 
 # Specify additional dependencies for packchk
 # Default: empty
@@ -97,6 +98,18 @@ PACKCHK_DEPS="
 # - tag       Tag annotations only
 #
 PACK_CHANGELOG_MODE="tag"
+
+# Specify file patterns to be excluded from the checksum file
+# Default: <empty>
+# Values:
+# - empty          All files packaged are included in the checksum file
+# - glob pattern   One glob pattern per line. Files matching a given pattern are excluded
+#                  from the checksum file
+# - "*"            The * (match all pattern) can be used to skip checksum file creating completely.
+# 
+# PACK_CHECKSUM_EXCLUDE="
+#   <list file patterns here>
+# "
 
 #
 # custom pre-processing steps
@@ -121,8 +134,7 @@ function postprocess() {
   # add custom steps here to be executed
   # after populating the pack build folder
   # but before archiving the pack into output folder
-  rm -rf ./apidoc
-  rm -rf ./tf-psa-crypto/apidoc
+  rm -rf ./apidoc ./tf-psa-crypto/apidoc
   find ./ -type d -name "__pycache__" -exec rm -rf {} +
   return 0
 }
@@ -131,8 +143,8 @@ function postprocess() {
 
 # Set GEN_PACK_LIB_PATH to use a specific gen-pack library root
 # ... instead of bootstrap based on REQUIRED_GEN_PACK_LIB
-if [[ -f "${GEN_PACK_LIB_PATH}/gen-pack" ]]; then
-  . "${GEN_PACK_LIB}/gen-pack"
+if [[ -n "${GEN_PACK_LIB_PATH}" ]] && [[ -f "${GEN_PACK_LIB_PATH}/gen-pack" ]]; then
+  . "${GEN_PACK_LIB_PATH}/gen-pack"
 else
   . <(curl -sL "https://raw.githubusercontent.com/Open-CMSIS-Pack/gen-pack/main/bootstrap")
 fi
