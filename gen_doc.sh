@@ -19,17 +19,6 @@ cd doxygen
 doxygen mbedtls.doxyfile
 cd ..
 
-cd tf-psa-crypto
-CRYPTO_VERSION=$(grep -oP 'set\(TF_PSA_CRYPTO_VERSION\s+\K[0-9.]+(?=\))' CMakeLists.txt)
-
-cd doxygen
-sed "s|@TF-PSA-Crypto_VERSION@|$CRYPTO_VERSION|g" tfpsacrypto.doxyfile.in > tfpsacrypto.doxyfile
-doxygen tfpsacrypto.doxyfile
-rm tfpsacrypto.doxyfile 
-cd ..
-
-cd ..
-
 # Restore configuration headers
 mv $MBEDTLS_CONFIG_BAK $MBEDTLS_CONFIG_H
 mv $CRYPTO_CONFIG_BAK $CRYPTO_CONFIG_H

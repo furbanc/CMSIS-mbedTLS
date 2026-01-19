@@ -37,7 +37,6 @@ PACK_DIRS="
   MDK
   programs
   RTE
-  tf-psa-crypto/apidoc 
   tf-psa-crypto/configs
   tf-psa-crypto/core
   tf-psa-crypto/docs
@@ -76,13 +75,12 @@ PACK_DELETE_FILES="
 # Specify addition argument to packchk
 # Default: empty
 #
-PACKCHK_ARGS=(-x M317,M378)
+PACKCHK_ARGS=(-x M317,M395)
 
 # Specify additional dependencies for packchk
 # Default: empty
 #
 PACKCHK_DEPS="
-  ARM.PSA.pdsc
   ARM.CMSIS.pdsc
   ARM.CMSIS-RTX.pdsc
   Keil.MDK-Middleware.pdsc
@@ -134,7 +132,7 @@ function postprocess() {
   # add custom steps here to be executed
   # after populating the pack build folder
   # but before archiving the pack into output folder
-  rm -rf ./apidoc ./tf-psa-crypto/apidoc
+  rm -rf ./apidoc
   find ./ -type d -name "__pycache__" -exec rm -rf {} +
   return 0
 }

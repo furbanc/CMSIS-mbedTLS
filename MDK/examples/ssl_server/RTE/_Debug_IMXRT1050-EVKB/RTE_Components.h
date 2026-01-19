@@ -28,10 +28,6 @@
 #define RTE_CMSIS_RTOS2                 /* CMSIS-RTOS2 */
 #define RTE_CMSIS_RTOS2_RTX5            /* CMSIS-RTOS2 Keil RTX5 */
 #define RTE_CMSIS_RTOS2_RTX5_SOURCE     /* CMSIS-RTOS2 Keil RTX5 Source */
-/* ARM::PSA:Crypto:mbed TLS@4.0.0 */
-#define RTE_PSA_CRYPTO_API
-/* ARM::PSA:Driver:Built in@4.0.0 */
-#define RTE_PSA_CRYPTO_DRIVER
 /* ARM::Security:mbed TLS@4.0.0 */
 #define RTE_Security_mbedTLS            /* Security mbed TLS */
 /* Keil::CMSIS Driver:Ethernet MAC@1.6.0 */

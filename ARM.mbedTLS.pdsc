@@ -85,11 +85,6 @@
       Initial release based on mbedTLS V2.1.2
     </release>
   </releases>
-  <requirements>
-    <packages>
-      <package vendor="ARM" name="PSA" version="1.0.0"/>
-    </packages>
-  </requirements>
   <conditions>
     <condition id="CMSIS RTOS">
       <description>CMSIS RTOS (API2)</description>
@@ -111,10 +106,6 @@
       <description>Default Network when not using MDK Network or IoT Socket</description>
       <deny condition="MDK Network"/>
       <deny condition="IoT Socket"/>
-    </condition>
-    <condition id="mbed TLS">
-      <description>mbed TLS component</description>
-      <require Cclass="Security" Cgroup="mbed TLS" Cversion="4.0.0"/>
     </condition>
   </conditions>
   <components>
@@ -164,16 +155,7 @@
         <file category="source"  name="library/x509write.c"/>
         <file category="source"  name="library/x509write_crt.c"/>
         <file category="source"  name="library/x509write_csr.c"/>
-      </files>
-    </component>
-<!-- <component Cclass="PSA" Cgroup="Crypto" Csub="mbed TLS" Capiversion="1.2.0" Cversion="4.0.0" condition="mbed TLS"> -->
-    <component Cclass="PSA" Cgroup="Crypto" Csub="mbed TLS" Cversion="4.0.0" condition="mbed TLS">
-      <description>mbed TLS PSA Crypto</description>
-      <RTE_Components_h>
-        #define RTE_PSA_CRYPTO_API
-      </RTE_Components_h>
-      <files>
-        <file category="doc"     name="tf-psa-crypto/apidoc/index.html"/>
+        <!-- PSA Crypto -->
         <file category="include" name="tf-psa-crypto/include/"/>
         <file category="include" name="tf-psa-crypto/core/"/>
         <file category="header"  name="RTE/configs/mbedTLS_crypto_config.h" attr="config" version="4.0.0"/>
@@ -185,14 +167,7 @@
         <file category="source"  name="tf-psa-crypto/core/psa_its_file.c"/>
         <file category="source"  name="tf-psa-crypto/core/tf_psa_crypto_config.c"/>
         <file category="source"  name="tf-psa-crypto/core/tf_psa_crypto_version.c"/>
-      </files>
-    </component>
-    <component Cclass="PSA" Cgroup="Driver" Csub="Built in" Cversion="4.0.0" condition="mbed TLS">
-      <description>mbed TLS PSA Crypto built-in drivers</description>
-      <RTE_Components_h>
-        #define RTE_PSA_CRYPTO_DRIVER
-      </RTE_Components_h>
-      <files>
+        <!-- PSA Crypto built-in drivers -->
         <file category="include" name="tf-psa-crypto/drivers/builtin/include/"/>
         <file category="include" name="tf-psa-crypto/drivers/builtin/src/"/>
         <file category="source"  name="tf-psa-crypto/drivers/builtin/src/aes.c"/>
