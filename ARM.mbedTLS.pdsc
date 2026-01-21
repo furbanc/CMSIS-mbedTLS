@@ -118,8 +118,6 @@
         <file category="doc"     name="apidoc/index.html"/>
         <file category="include" name="include/"/>
         <file category="include" name="library/"/>
-        <file category="include" name="RTE/include/"/>
-        <file category="header"  name="RTE/configs/mbedTLS_config.h"        attr="config" version="4.0.0"/>
         <file category="source"  name="library/debug.c"/>
         <file category="source"  name="library/error.c"/>
         <file category="source"  name="library/mbedtls_config.c"/>
@@ -158,7 +156,6 @@
         <!-- PSA Crypto -->
         <file category="include" name="tf-psa-crypto/include/"/>
         <file category="include" name="tf-psa-crypto/core/"/>
-        <file category="header"  name="RTE/configs/mbedTLS_crypto_config.h" attr="config" version="4.0.0"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto.c"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto_client.c"/>
         <file category="source"  name="tf-psa-crypto/core/psa_crypto_driver_wrappers_no_static.c"/>

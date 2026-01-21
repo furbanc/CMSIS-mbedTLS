@@ -36,7 +36,6 @@ PACK_DIRS="
   library
   MDK
   programs
-  RTE
   tf-psa-crypto/configs
   tf-psa-crypto/core
   tf-psa-crypto/docs
