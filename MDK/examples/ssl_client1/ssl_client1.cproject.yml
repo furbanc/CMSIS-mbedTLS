@@ -1,7 +1,12 @@
 # A project translates into one executable or library.
 project:
 
+  define:
+    - MBEDTLS_CONFIG_FILE: \"mbedtls_config_user.h\"
+    - TF_PSA_CRYPTO_CONFIG_FILE: \"crypto_config_user.h\"
+
   add-path:
+    - ./
     - ../tests/include
 
   groups:
