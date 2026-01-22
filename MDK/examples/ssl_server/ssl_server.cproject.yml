@@ -2,8 +2,10 @@
 project:
 
   define:
-    - MBEDTLS_CONFIG_FILE: \"mbedtls_config_user.h\"
-    - TF_PSA_CRYPTO_CONFIG_FILE: \"crypto_config_user.h\"
+#   - MBEDTLS_CONFIG_FILE: \"app_mbedtls_config.h\"
+    - MBEDTLS_USER_CONFIG_FILE: \"mbedtls_user_config.h\"
+#   - TF_PSA_CRYPTO_CONFIG_FILE: \"app_crypto_config.h\"
+    - TF_PSA_CRYPTO_USER_CONFIG_FILE: \"crypto_user_config.h\"
 
   add-path:
     - ./
